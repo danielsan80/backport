@@ -14,6 +14,7 @@ class CastScalarMethodReturn extends NodeVisitorAbstract
         'int' => Node\Expr\Cast\Int_::class,
         'float' => Node\Expr\Cast\Double::class,
     ];
+    
     public function leaveNode(Node $node) {
         if (!$node instanceof Node\Stmt\ClassMethod) {
             return;
