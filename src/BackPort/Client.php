@@ -4,8 +4,45 @@ namespace BackPort;
 
 class Client
 {
+    protected $projectDir;
+    protected $dirsToPort = [];
+    protected $composerJsonReplacements =[
+        [
+            'pattern' => '/"php": "[^"]+"/',
+            'replacement' => '"php": ">=7.0"'
+        ]
+    ];
 
-    public function execute($projectDir, array $dirs)
+    public function setProjectDir($projectDir)
+    {
+        $this->projectDir = $projectDir;
+        return $this;
+    }
+
+    public function setDirsToPort(array $dirs)
+    {
+        $this->dirsToPort = $dirs;
+        return $this;
+    }
+
+    public function addDirToPort($dir)
+    {
+        $this->dirsToPort[] = $dir;
+        return $this;
+    }
+
+    public function addComposerJsonReplacement($pattern, $replacement)
+    {
+        $this->composerJsonReplacements[] = [
+            'pattern' => $pattern,
+            'replacement' => $replacement,
+        ];
+
+        return $this;
+
+    }
+
+    public function execute()
     {
 
         exec('git status', $output);
@@ -28,15 +65,27 @@ class Client
 
         $backporter = new DirectoryBackPorter();
 
-        foreach($dirs as $dir) {
+        foreach($this->dirsToPort as $dir) {
             $backporter->port($dir);
         }
 
-        if (file_exists($projectDir.'/composer.json')) {
-            $content = file_get_contents($projectDir.'/composer.json');
-            $content = preg_replace('/"php": "[^"]+"/', '"php": ">=7.0"', $content);
-            file_put_contents($projectDir.'/composer.json', $content);
+        if ($this->composerJsonReplacements) {
+            if (!$this->projectDir) {
+                throw new \InvalidArgumentException('ProjectDir is not set');
+
+            }
+            if (!file_exists($this->projectDir.'/composer.json')) {
+                throw new \InvalidArgumentException('composer.json does not exist');
+
+            }
+
+            $content = file_get_contents($this->projectDir.'/composer.json');
+            foreach ($this->composerJsonReplacements as $item) {
+                $content = preg_replace($item['pattern'], $item['replacement'], $content);
+            }
+            file_put_contents($this->projectDir.'/composer.json', $content);
         }
+
 
     }
 
