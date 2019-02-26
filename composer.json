@@ -15,10 +15,10 @@
     },
     "require": {
         "php": ">=7.1",
+        "nikic/php-parser": "^4.2",
         "symfony/finder": "*"
     },
     "require-dev": {
-        "nikic/php-parser": "^4.2",
         "symfony/phpunit-bridge": "*"
     },
     "config": {
