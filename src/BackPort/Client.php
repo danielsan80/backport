@@ -5,7 +5,7 @@ namespace BackPort;
 class Client
 {
 
-    public function execute(array $dirs)
+    public function execute($projectDir, array $dirs)
     {
 
         exec('git status', $output);
@@ -30,6 +30,12 @@ class Client
 
         foreach($dirs as $dir) {
             $backporter->port($dir);
+        }
+
+        if (file_exists($projectDir.'/composer.json')) {
+            $content = file_get_contents($projectDir.'/composer.json');
+            $content = preg_replace('/"php": "[^"]+"/', '"php": ">=7.0"', $content);
+            file_put_contents($projectDir.'/composer.json', $content);
         }
 
     }
