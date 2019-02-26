@@ -24,3 +24,5 @@ RUN sed -i "s/\/usr\/bin\/supervisord//" /usr/local/bin/start-container && \
     echo "/usr/bin/supervisord" >> /usr/local/bin/start-container
 
 COPY --chown=utente:utente .gitconfig /home/utente/
+COPY --chown=utente:utente var/.ssh/* /home/utente/.ssh/
+RUN  chmod 600 /home/utente/.ssh/id_rsa
