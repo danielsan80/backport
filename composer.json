@@ -1,0 +1,32 @@
+{
+    "name": "dan/backport",
+    "description": "A simple php backport module",
+    "license": "proprietary",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "BackPort\\": "src/BackPort/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "symfony/finder": "*"
+    },
+    "require-dev": {
+        "nikic/php-parser": "^4.2",
+        "symfony/phpunit-bridge": "*"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    }
+}

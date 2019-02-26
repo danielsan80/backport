@@ -1,0 +1,7 @@
+/var/**
+!/var/**/
+
+/php/var/**
+!/php/var/**/
+
+!.gitkeep
