@@ -152,6 +152,9 @@ e gli script di backport aiutano a tenere allineate queste dipendenze parallele.
 
 
 
+### Credits
+
+Thanks to [Matiux](https://github.com/matiux) for the Docker images used from the project
 
 
   
