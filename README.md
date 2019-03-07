@@ -33,7 +33,6 @@ component Alpha
 Alpha ..> Beta
 Beta ..> Gamma
 Alpha ..> Gamma
-
 ```
 
 Tra le opzioni che si presentavano c'erano:
@@ -74,7 +73,6 @@ git checkout master
 git branch -D master_bp
 git push -d origin master_bp
 git checkout master_bp
-
 ```
 
 Una volta risolti i conflitti o rigenerato il branch bisogna eseguire lo script di backport
