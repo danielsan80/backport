@@ -1,5 +1,5 @@
 {
-    "name": "dansan/backport",
+    "name": "dansan/php-backport",
     "description": "A simple php backport module",
     "license": "MIT",
     "type": "library",
