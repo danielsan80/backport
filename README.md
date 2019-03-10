@@ -2,6 +2,52 @@
 
 ## Getting started
 
+```
+composer requre dansan/php-backport --dev
+```
+
+Write the `backport.php` file to backport the source dir.
+
+```php
+<?php
+// bin/backport.php
+require __DIR__.'/../vendor/autoload.php';
+
+$client = new \BackPort\Client();
+$client
+    ->setDirsToPort([
+        __DIR__.'/../src',
+    ])
+    ->execute()
+;
+echo "DONE\n";
+```
+
+Move on a `*_bp` branch, launch the backport.php script, commit and push
+
+```
+git branch master_bp
+git checkout master_bp
+php bin/backport.php
+git add .
+git commit -m "backport"
+git push origin master_bp
+```
+
+In composer.json of the project where you need a backported version of your module:
+
+```
+    ...
+    "require": {
+        ...
+        "acme/my-module": "dev-master_bp@dev",
+        ...
+    }
+    ...
+```
+
+## Develope
+
 Per iniziare clonare e avviare il progetto, poi eseguire i test.
 
 ```
