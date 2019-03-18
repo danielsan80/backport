@@ -61,7 +61,7 @@ test
 Prima di fare `./dc up -d` è meglio fare `cp .env.dist .env` e modificare il `.env`
 opportunamente.
 
-## Introduzione
+## Cos'è
 
 Questo modulo serve a fare il backporting di alcune funzionalità di PHP 7.0 nel modulo in cui viene usato.
 
