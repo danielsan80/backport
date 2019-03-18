@@ -46,12 +46,12 @@ In composer.json of the project where you need a backported version of your modu
     ...
 ```
 
-## Develope
+## Development
 
 Per iniziare clonare e avviare il progetto, poi eseguire i test.
 
 ```
-git clone git@bitbucket.org:idrolabsrl/dd-dist.git <project_dir>
+git clone <url> <project_dir>
 cd <project_dir>
 ./dc up -d
 ./dc enter
@@ -198,7 +198,7 @@ e gli script di backport aiutano a tenere allineate queste dipendenze parallele.
 
 ### Credits
 
-Thanks to [Matiux](https://github.com/matiux) for the Docker images used from the project
+Thanks to [Matiux](https://github.com/matiux) for the Docker images used in the project
 
 
   
