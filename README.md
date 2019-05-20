@@ -111,8 +111,16 @@ git checkout master_bp
 git merge master
 ```
 
-Se il numero di conflitti è gestibile si possono risolvere e procedere, altrimenti conviene eliminare `master_bp` e
-ricrearlo da zero
+Generalmente si verificano dei conflitti.
+
+Risolvere i conflitti accettando tutto quello che viene da `master`
+
+
+> Con PHPStorm è sufficiente fare `Git -> Resolve Conflicts`, selezionare tutto
+e `Accept Theirs`.
+
+Si tratta di codice completamente derivato quindi si può anche eliminare `master_bp` e
+ricrearlo da zero se c'è il dubbio che qualcosa non torni
 
 ```
 git checkout master
